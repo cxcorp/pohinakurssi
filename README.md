@@ -1,5 +1,5 @@
 # pohinaprojekti
-React &amp; Node.js course project
+Node.js course project
 
 ## Time management
 
