@@ -1,6 +1,9 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "typeRoots": [
+      "./src/typings"
+    ],
     "outDir": "build/",
     "module": "commonjs",
     "target": "es6",
@@ -16,8 +19,7 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "suppressImplicitAnyIndexErrors": true
   },
   "exclude": [
     "node_modules",
