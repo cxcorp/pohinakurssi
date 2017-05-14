@@ -1,4 +1,6 @@
 # pohinaprojekti
+![Travis CI shield](https://api.travis-ci.org/cxcorp/pohinaprojekti-server.svg?branch=master)
+
 Node.js course project
 
 ## Time management
