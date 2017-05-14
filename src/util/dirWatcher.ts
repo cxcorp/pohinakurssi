@@ -62,14 +62,12 @@ export class DirWatcher {
     }
 
     private updateSnapshot(): Promise<SnapshotDelta<string>> {
-        const stack = new Error().stack;
-
         const readdir = Promise.promisify(fs.readdir);
         return readdir(this.opts.directory)
             .then(this.filterFiles)
             .then(snap => this.snapshots.update(snap))
             .catch(err => {
-                logger.error('Error while updating snapshot: error %s, stack:\n%s', err, stack);
+                logger.error('Error while updating snapshot: error %s', err);
                 throw err;
             });
     }
