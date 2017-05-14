@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as express from 'express';
 import * as dotenv from 'dotenv';
 import * as c from 'chalk';
+import { DirWatcherBuilder, DirWatcher } from './util/dirWatcher';
 import { ProcessWatcher } from './util/processWatcher/processWatcher';
 import createLogger from './logger';
 const logger = createLogger(__filename);
@@ -22,14 +23,13 @@ app.get('/', (req, res) => {
 app.listen(1235, () => {
     logger.info('Server started on port 1235');
 
-    const watcher = ProcessWatcher.forCurrentPlatform();
-    watcher.on('watch_ready', e => {
-        logger.info(`${c.blue('READY')} pids [ ${e.pids.slice(0, 10).join(', ')} ... ]`);
-    });
-    watcher.on('proc_created', e => {
-        logger.info(`${c.green('CREATED')} pid ${e.pid}`);
-    });
-    watcher.on('proc_died', e => {
-        logger.info(`${c.yellow('DIED')} pid ${e.pid}`);
-    });
+    const watcher = new DirWatcherBuilder()
+        .directory('./')
+        .pollInterval(1000)
+        .directoryEntryFilter(e => !isNaN(parseInt(e, 10)))
+        .on('ready', dirs => logger.info('READY    [ %s ... ]', dirs.slice(0, 10).join(', ')))
+        .on('created', dirs => logger.info('CREATED  [ %s ]', dirs.join(', ')))
+        .on('unlinked', dirs => logger.info('UNLINKED [ %s ]', dirs.join(', ')))
+        .create();
+    watcher.start();
 });

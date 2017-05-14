@@ -1,10 +1,5 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
-    "typeRoots": [
-      "./src/typings"
-    ],
-    "outDir": "build/",
     "module": "commonjs",
     "target": "es6",
     "lib": [
@@ -13,7 +8,6 @@
     "sourceMap": true,
     "allowJs": false,
     "moduleResolution": "node",
-    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -28,7 +22,6 @@
     "acceptance-tests",
     "webpack",
     "jest",
-    "test",
     "src/setupTests.ts"
   ],
   "types": [
