@@ -30,7 +30,8 @@ app.get('/processes', (req, res) => {
 });
 
 watcher.start().then(() => {
-    app.listen(1235, () => {
-        logger.info('Server started on port 1235');
+    const port = process.env.PORT || 1235;
+    app.listen(port, () => {
+        logger.info('Server started on port ' + port);
     });
 });
