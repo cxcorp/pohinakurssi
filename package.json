@@ -19,7 +19,8 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "lodash": "^4.17.4",
-    "winston": "^2.3.1"
+    "winston": "^2.3.1",
+    "typescript": "^2.3.2"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.3",
@@ -34,7 +35,6 @@
     "mocha": "^3.3.0",
     "nodemon": "^1.11.0",
     "ts-node": "^3.0.4",
-    "tslint": "^5.2.0",
-    "typescript": "^2.3.2"
+    "tslint": "^5.2.0"
   }
 }
