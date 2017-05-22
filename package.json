@@ -7,6 +7,8 @@
     "watch-ts": "tsc -w",
     "watch-server": "nodemon ./build",
     "watch": "npm run watch-ts & npm run watch-server",
+    "start": "npm run build && node ./build/index.js",
+    "build": "tsc",
     "test": "npm run unit-test",
     "unit-test": "TS_NODE_PROJECT=tsconfig.test.json mocha"
   },
