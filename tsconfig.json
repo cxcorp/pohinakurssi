@@ -1,9 +1,6 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "typeRoots": [
-      "./src/typings"
-    ],
     "outDir": "build/",
     "module": "commonjs",
     "target": "es6",
@@ -30,8 +27,5 @@
     "jest",
     "test",
     "src/setupTests.ts"
-  ],
-  "types": [
-    "typePatches"
   ]
 }
