@@ -2,7 +2,7 @@
   "name": "pohinaprojekti-server",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "./build/index.js",
   "scripts": {
     "watch-ts": "tsc -w",
     "watch-server": "nodemon ./build",
