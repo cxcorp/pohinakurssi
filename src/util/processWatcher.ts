@@ -66,7 +66,7 @@ function fetchProcs(): Promise<Process[]> {
 /**
  * Parses the table produced by `ps -o pid,%cpu,%mem,user,command`
  */
-function parsePsOutput(psOutput: string): Process[] {
+export function parsePsOutput(psOutput: string): Process[] {
     const lines = splitLines(psOutput);
     return _.drop(lines, 1)
         .filter(arr => !_.isEmpty(arr))
