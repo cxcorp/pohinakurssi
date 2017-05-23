@@ -9,6 +9,7 @@ export default function createRouter(processWatcher: CachingProcessWatcher) {
     const router = express.Router();
 
     router.get('/swagger.json', (req, res) => {
+        res.header('Access-Control-Allow-Origin', '*');
         res.json(swaggerSpec);
     });
 

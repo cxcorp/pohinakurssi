@@ -7,6 +7,7 @@ const swaggerSpec = require('../../data/swagger.json');
 function createRouter(processWatcher) {
     const router = express.Router();
     router.get('/swagger.json', (req, res) => {
+        res.header('Access-Control-Allow-Origin', '*');
         res.json(swaggerSpec);
     });
     router.get('/processes', (req, res) => {
