@@ -3,13 +3,13 @@ import * as express from 'express';
 import { CachingProcessWatcher, Process } from '../util/processWatcher';
 import createLogger from '../logger';
 const logger = createLogger(__filename);
+const swaggerSpec = require('../../data/swagger.json');
 
 export default function createRouter(processWatcher: CachingProcessWatcher) {
     const router = express.Router();
 
     router.get('/swagger.json', (req, res) => {
-        const filePath = path.resolve('../../data/swagger.json');
-        res.sendFile(filePath);
+        res.json(swaggerSpec);
     });
 
     router.get('/processes', (req, res) => {
