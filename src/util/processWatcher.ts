@@ -28,8 +28,15 @@ export class CachingProcessWatcher {
         }
 
         this.initialized = true;
+
+        const updt = (() => {
+            this.update().then(() => {
+                this.updateTimer = setTimeout(updt, this.cacheAge);
+            });
+        }).bind(this);
+
         return this.update().then(() => {
-            this.updateTimer = setInterval(this.update.bind(this), this.cacheAge);
+            this.updateTimer = setTimeout(updt, this.cacheAge);
         });
     }
 

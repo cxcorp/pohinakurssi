@@ -17,8 +17,13 @@ class CachingProcessWatcher {
             throw new Error('Cannot start process watcher twice!');
         }
         this.initialized = true;
+        const updt = (() => {
+            this.update().then(() => {
+                this.updateTimer = setTimeout(updt, this.cacheAge);
+            });
+        }).bind(this);
         return this.update().then(() => {
-            this.updateTimer = setInterval(this.update.bind(this), this.cacheAge);
+            this.updateTimer = setTimeout(updt, this.cacheAge);
         });
     }
     fetch() {
