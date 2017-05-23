@@ -5,6 +5,9 @@ const logger_1 = require("../logger");
 const logger = logger_1.default(__filename);
 function createRouter(processWatcher) {
     const router = express.Router();
+    router.get('/swagger.json', (req, res) => {
+        res.sendFile('../../data/swagger.json');
+    });
     router.get('/processes', (req, res) => {
         processWatcher.fetch().then(procs => {
             res.json({
