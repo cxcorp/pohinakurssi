@@ -10,13 +10,14 @@
     "start": "node ./build/index.js",
     "build": "tsc",
     "test": "npm run unit-test",
-    "unit-test": "TS_NODE_PROJECT=tsconfig.test.json mocha"
+    "unit-test": "cross-env NODE_ENV=production TS_NODE_PROJECT=tsconfig.test.json mocha"
   },
   "author": "Joona Heikkilä",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
     "compression": "^1.6.2",
+    "cross-env": "^5.0.0",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "helmet": "^3.6.1",
