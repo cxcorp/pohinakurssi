@@ -4,7 +4,7 @@ import * as helmet from 'helmet';
 import * as compression from 'compression';
 import * as dotenv from 'dotenv';
 import { CachingProcessWatcher, Process } from './util/processWatcher';
-import createRouter from './router/';
+import createRouter from './router/index';
 import createLogger from './logger';
 const logger = createLogger(__filename);
 dotenv.config();

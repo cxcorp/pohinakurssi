@@ -5,7 +5,7 @@ const helmet = require("helmet");
 const compression = require("compression");
 const dotenv = require("dotenv");
 const processWatcher_1 = require("./util/processWatcher");
-const _1 = require("./router/");
+const index_1 = require("./router/index");
 const logger_1 = require("./logger");
 const logger = logger_1.default(__filename);
 dotenv.config();
@@ -13,7 +13,7 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 const watcher = new processWatcher_1.CachingProcessWatcher(1000);
-app.use('/', _1.default(watcher));
+app.use('/', index_1.default(watcher));
 watcher.start().then(() => {
     const port = process.env.PORT || 1235;
     app.listen(port, () => {

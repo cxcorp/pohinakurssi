@@ -50,6 +50,13 @@ function fetchProcs() {
 }
 /**
  * Parses the table produced by `ps -o pid,%cpu,%mem,user,command`
+ *
+ * Example input:
+ *
+ *   PID  %CPU %MEM USER          COMMAND
+ * 57656   0.0  0.1 joonapersonal -zsh
+ *   123  11.5 11.9 joonapersonal /Applications/iTerm.app/Contents/MacOS/iTerm2 --server login
+ *  1234   0.1  0.0 joonapersonal Blah --yeah boiii
  */
 function parsePsOutput(psOutput) {
     const lines = splitLines(psOutput);
