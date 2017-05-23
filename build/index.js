@@ -13,7 +13,7 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 const watcher = new processWatcher_1.CachingProcessWatcher(1000);
-app.use('/', index_1.default(watcher));
+app.use('/api', index_1.default(watcher));
 watcher.start().then(() => {
     const port = process.env.PORT || 1235;
     app.listen(port, () => {

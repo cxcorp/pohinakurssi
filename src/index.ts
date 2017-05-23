@@ -14,7 +14,7 @@ app.use(helmet());
 app.use(compression());
 
 const watcher = new CachingProcessWatcher(1000);
-app.use('/', createRouter(watcher));
+app.use('/api', createRouter(watcher));
 
 watcher.start().then(() => {
     const port = process.env.PORT || 1235;
