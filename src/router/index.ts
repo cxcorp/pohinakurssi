@@ -22,10 +22,17 @@ export default function createRouter(processWatcher: CachingProcessWatcher) {
             logger.error('An error occurred while fetching the process list', err);
             res.status(500).json({
                 result: [],
-                error: 'An error occurred while fetching the process list.'
+                err: 'An error occurred while fetching the process list.'
             });
         });
     });
+
+    router.use(((err, req, res, next) => {
+        logger.error('Uncaught error caught!', err);
+        res.json({
+            err: 'An error has occurred.'
+        });
+    }) as express.ErrorRequestHandler);
 
     return router;
 }
