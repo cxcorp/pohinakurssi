@@ -15,7 +15,7 @@ export interface Process {
 }
 
 export class CachingProcessWatcher {
-    private initialized: true;
+    private initialized: boolean = false;
     private processes: Process[] = [];
     private updateTimer?: NodeJS.Timer;
 
