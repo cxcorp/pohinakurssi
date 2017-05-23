@@ -4,7 +4,7 @@ import * as child_process from 'child_process';
 import createLogger from '../logger';
 const logger = createLogger(__filename);
 
-const execFile = Promise.promisify(child_process.execFile) as (cmd: string) => Promise<string>;
+const exec = Promise.promisify(child_process.exec) as (cmd: string) => Promise<string>;
 
 export interface Process {
     pid: number;
@@ -67,7 +67,7 @@ export class CachingProcessWatcher {
 
 function fetchProcs(): Promise<Process[]> {
     const psCommand = 'ps -Ao pid,%cpu,%mem,user,command';
-    return execFile(psCommand).then((stdout: string) => parsePsOutput(stdout));
+    return exec(psCommand).then((stdout: string) => parsePsOutput(stdout));
 }
 
 /**
