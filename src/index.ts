@@ -10,6 +10,7 @@ const logger = createLogger(__filename);
 dotenv.config();
 
 const app = express();
+app.disable('x-powered-by');
 app.use(helmet());
 app.use(compression());
 

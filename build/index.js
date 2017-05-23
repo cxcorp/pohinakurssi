@@ -10,6 +10,7 @@ const logger_1 = require("./logger");
 const logger = logger_1.default(__filename);
 dotenv.config();
 const app = express();
+app.disable('x-powered-by');
 app.use(helmet());
 app.use(compression());
 const watcher = new processWatcher_1.CachingProcessWatcher(1000);
