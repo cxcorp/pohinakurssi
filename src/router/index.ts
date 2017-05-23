@@ -1,3 +1,4 @@
+import * as path from 'path';
 import * as express from 'express';
 import { CachingProcessWatcher, Process } from '../util/processWatcher';
 import createLogger from '../logger';
@@ -7,7 +8,8 @@ export default function createRouter(processWatcher: CachingProcessWatcher) {
     const router = express.Router();
 
     router.get('/swagger.json', (req, res) => {
-        res.sendFile('../../data/swagger.json');
+        const filePath = path.resolve('../../data/swagger.json');
+        res.sendFile(filePath);
     });
 
     router.get('/processes', (req, res) => {

@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const path = require("path");
 const express = require("express");
 const logger_1 = require("../logger");
 const logger = logger_1.default(__filename);
 function createRouter(processWatcher) {
     const router = express.Router();
     router.get('/swagger.json', (req, res) => {
-        res.sendFile('../../data/swagger.json');
+        const filePath = path.resolve('../../data/swagger.json');
+        res.sendFile(filePath);
     });
     router.get('/processes', (req, res) => {
         processWatcher.fetch().then(procs => {
