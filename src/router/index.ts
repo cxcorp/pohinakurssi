@@ -6,6 +6,10 @@ const logger = createLogger(__filename);
 export default function createRouter(processWatcher: CachingProcessWatcher) {
     const router = express.Router();
 
+    router.get('/swagger.json', (req, res) => {
+        res.sendFile('../../data/swagger.json');
+    });
+
     router.get('/processes', (req, res) => {
         processWatcher.fetch().then(procs => {
             res.json({

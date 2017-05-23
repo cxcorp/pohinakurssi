@@ -1,0 +1,94 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This API exposes access to process-related endpoints on the host server.",
+    "version": "0.1.0",
+    "title": "pöhinäprojekti-server",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/cxcorp/pohinaprojekti-server/blob/master/LICENSE"
+    }
+  },
+  "host": "pohinaprojekti.herokuapp.com",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "processes",
+      "description": "Everything about the processes running on the server"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/processes": {
+      "get": {
+        "tags": [
+          "processes"
+        ],
+        "summary": "Gets all processes running on the server",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ProcessResponse"
+            }
+          },
+          "500": {
+            "description": "internal server error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "err": {
+          "type": "string"
+        }
+      }
+    },
+    "ProcessResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Process"
+          }
+        }
+      }
+    },
+    "Process": {
+      "type": "object",
+      "properties": {
+        "pid": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "command": {
+          "type": "string"
+        },
+        "cpu": {
+          "type": "integer",
+          "format": "float"
+        },
+        "mem": {
+          "type": "integer",
+          "format": "float"
+        },
+        "user": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
