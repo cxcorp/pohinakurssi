@@ -9,6 +9,7 @@ const exec = Promise.promisify(child_process.exec);
 class CachingProcessWatcher {
     constructor(cacheAge) {
         this.cacheAge = cacheAge;
+        this.initialized = false;
         this.processes = [];
     }
     start() {
@@ -57,6 +58,7 @@ function parsePsOutput(psOutput) {
         .map(parseLine)
         .filter(p => !_.isNil(p));
 }
+exports.parsePsOutput = parsePsOutput;
 function parseLine(line) {
     const tokenCount = 5;
     const tokens = line.trim().split(/ +/);
