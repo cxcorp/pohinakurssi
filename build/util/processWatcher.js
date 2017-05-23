@@ -5,7 +5,7 @@ const Promise = require("bluebird");
 const child_process = require("child_process");
 const logger_1 = require("../logger");
 const logger = logger_1.default(__filename);
-const exec = Promise.promisify(child_process.exec);
+const execFile = Promise.promisify(child_process.execFile);
 class CachingProcessWatcher {
     constructor(cacheAge) {
         this.cacheAge = cacheAge;
@@ -51,7 +51,7 @@ class CachingProcessWatcher {
 exports.CachingProcessWatcher = CachingProcessWatcher;
 function fetchProcs() {
     const psCommand = 'ps -Ao pid,%cpu,%mem,user,command';
-    return exec(psCommand).then((stdout) => parsePsOutput(stdout));
+    return execFile(psCommand).then((stdout) => parsePsOutput(stdout));
 }
 /**
  * Parses the table produced by `ps -o pid,%cpu,%mem,user,command`
